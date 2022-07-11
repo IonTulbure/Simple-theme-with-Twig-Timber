@@ -1,14 +1,23 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+
+<div class="container-fluid bg-light">
+    <div class="container py-3">
+        <div class="row text-info">
+            <div class="col border border-danger">
+                Column
+            </div>
+            <div class="col border border-success">
+                Column
+            </div>
+            <div class="col border border-dark">
+                Column
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1>Hello from page.twig - {{ post.title }}</h1>
+
 {% endblock %}
