@@ -23,11 +23,17 @@
 
 $context = Timber::context();
 
+global $paged;
+if (!isset($paged) || !$paged){
+    $paged = 1;
+}
+
 $query = array(
     'post_type' => 'post',
     'orderby'  =>  'ID',
     'order'    => 'DESC',
-    'posts_per_page' => '12'
+    'posts_per_page' => '12',
+    'paged'    => $paged
 );
 $context['posts'] = new Timber\PostQuery($query);
 
