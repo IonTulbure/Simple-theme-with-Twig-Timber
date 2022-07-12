@@ -37,4 +37,10 @@ if ( is_day() ) {
 
 $context['posts'] = new Timber\PostQuery();
 
+$context['categories']  = get_terms(array('taxonomy' => 'category'));
+$context['tags']        = get_terms(array('taxonomy' => 'post_tag'));
+
+// Info About current cat or tag
+$context['current']		= get_queried_object();
+
 Timber::render( $templates, $context );

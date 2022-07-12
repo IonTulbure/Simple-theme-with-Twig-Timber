@@ -1,15 +1,42 @@
 {% extends "base.twig" %}
 
+{% block subheader %}
+    <div class="container-fluid py-4 bg-light border-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    {% for cat in categories %}
+                        {% if cat.name == current.name %}
+                            <a role="button" href="/category/{{ cat.slug }}" class="btn btn-primary btn-sm">
+                                {{ cat.name }}
+                                <span class="badge text-bg-light">{{ current.count }}</span>
+                            </a>
+                        {% else %}
+                            <a role="button" href="/category/{{ cat.slug }}" class="btn btn-outline-primary btn-sm">{{ cat.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div><!-- col-4 -->
+                <div class="col-8 text-end">
+                    {% for tag in tags %}
+                        {% if tag.name == current.name %}
+                            <a role="button" href="/tag/{{ tag.slug }}" class="btn btn-secondary btn-sm">
+                                {{ tag.name }}
+                                <span class="badge text-bg-light">{{ current.count }}</span>
+                            </a>
+                        {% else %}
+                            <a role="button" href="/tag/{{ tag.slug }}" class="btn btn-outline-secondary btn-sm">{{ tag.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div><!-- col-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- container-fluid py-2 bg-light border-bottom -->
+{% endblock %}
+
 {% block content %}
-
-{% for post in posts %}
-
-{{ include('parts/news-teaser.twig') }}
-
-{% endfor %}
-
-{{ include('parts/pagination.twig') }}
-
-<div class="container py-5 my-5"></div>
-
+    {% for post in posts %}
+        {{ include('parts/news-teaser.twig') }}
+    {% endfor %}
+        {{ include('parts/pagination.twig') }}
+    <div class="container py-5 my-5"></div>
 {% endblock %}

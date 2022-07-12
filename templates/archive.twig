@@ -1,5 +1,9 @@
 {% extends "base.twig" %}
 
+{% block subheader %}
+    {{ block("subheader", "pages/news.twig") }}
+{% endblock %}
+
 {% block content %}
 
 <h1 class="py-3">Archive</h1>
