@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-4">
                     {% for cat in categories %}
-                        {% if cat.name == current.name %}
+                        {% if cat.name == current.name or cat.name in post.terms('categories') %}
                             <a role="button" href="/category/{{ cat.slug }}" class="btn btn-primary btn-sm">
                                 {{ cat.name }}
                                 <span class="badge text-bg-light">{{ current.count }}</span>
@@ -18,7 +18,7 @@
                 </div><!-- col-4 -->
                 <div class="col-8 text-end">
                     {% for tag in tags %}
-                        {% if tag.name == current.name %}
+                        {% if tag.name == current.name or tag.name in post.terms('tags') %}
                             <a role="button" href="/tag/{{ tag.slug }}" class="btn btn-secondary btn-sm">
                                 {{ tag.name }}
                                 <span class="badge text-bg-light">{{ current.count }}</span>
