@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h2 class="fw-bold">{{ post.title }}</h2><!-- fw-bold -->
+        <span class="badge text-bg-light">
+            by, {{ post.author.display_name }}, {{ post.date }}
+        </span><!-- badge badge-light -->
+
+        {% set word_count = post.content|split(' ')|length %}
+        {% set reading_time = (word_count / art)|round(0, 'ceil') %}
+
+        <span class="badge text-bg-light">
+            Reading time: {{ reading_time }} minute{{ reading_time > 1 ? 's' }}
+        </span><!-- badge badge-light -->
+
+        <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="400px"
+            class="mt-2 ms-4 mb-3 rounded float-end">
+        <div class="text-justify mt-3">
+            {{ post.content }}
+        </div><!-- text-justify mt-3 -->
+    </div>
+</div>
+
+{% endblock %}
