@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block subheader %}
+    {% from "parts/macros.twig" import header %}
+    {{ header( Image(post.image).src('full'), post.message ) }}
+{% endblock %}
+
+{% block content %}
+<div class="row pt-5">
+    {% for person in people %}
+    <div class="col-3 text-center mb-5">
+        <img src="{{ person.thumbnail.src('thumbnail') }}" alt="img" class="rounded-circle border border-dark">
+        <h5 class="pt-2 text-secondary">
+            <a href="{{ person.link }}">{{ person.name }}</a>
+        </h5><!-- pt-2 text-secondary -->
+        <div class="d-flex justify-content-center">
+            <hr width="50%">
+        </div><!-- text-center -->
+        <p class="text-muted">{{ person.content|excerpt(8) }}</p>
+    </div><!-- col-3 text-center mb5 -->
+    {% endfor %}
+</div><!-- row -->
+{% endblock %}
