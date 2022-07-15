@@ -11,17 +11,36 @@
             {{ post.title }}
         </h2><!-- fw-bold border-bottom border-secondary pb-4 -->
         <div class="fst-italic fw-light mt-4">
-            {{ post.content }}
+            {# Display content by user capability #}
+            {{ user.can('read') ? post.content : 'You must be logged to see this!' }}
         </div><!-- fst-italic fw-light mt-4 -->
         <div>
             {% if post.meta('favourite_places') %}
-                <h5 class="mt-4">Favourite places:</h5><!-- mt-4 -->
-                {% for place in post.meta('favourite_places') %}
-                    <span class="badge fs-6 bg-secondary">{{ place.title }}</span><!-- badge badge-secondary -->
-                {% endfor %}
+            <h5 class="mt-4">Favourite places:</h5><!-- mt-4 -->
+            {% for place in post.meta('favourite_places') %}
+            <span class="badge fs-6 bg-secondary">{{ place.title }}</span><!-- badge badge-secondary -->
+            {% endfor %}
             {% endif %}
         </div>
     </div><!-- col-9 text-end -->
 </div><!-- row -->
+
+<hr class="mt-5">
+<h3 class="text-center text-secondary fw-light pt-3">See also:</h3><!-- text-center text-secondary fw-light -->
+
+<div class="row mt-5">
+
+    {% for person in people %}
+        {% if person.id != post.id %}
+            <div class="col text-center text-secondary mb-5">
+                <img src="{{ person.thumbnail.src('thumbnail') }}" class="border border-dark rounded-circle" alt="img">
+                <h5 class="pt-2 text-secondary">
+                    <a href="{{ person.link }}">{{ person.title }}</a>
+                </h5><!-- pt-2 text-secondary -->
+            </div><!-- col text-center text-secondary mb-5 -->
+        {% endif %}
+    {% endfor %}
+
+</div><!-- row mt-5 -->
 
 {% endblock %}
