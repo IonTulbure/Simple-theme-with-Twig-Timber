@@ -25,6 +25,12 @@ $context = Timber::context();
 
 $context['places'] = new Timber\Term('food');
 
+$query = array(
+    'post_type' => 'person',
+    'posts_per_page' => '-1'
+);
+$context['people'] = new Timber\PostQuery($query);
+
 $timber_post     = new Timber\Post();
 $context['post'] = $timber_post;
 Timber::render( 'pages/places.twig', $context );

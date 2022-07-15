@@ -17,7 +17,17 @@
             </div><!-- col-2 -->
             <div class="col-10">
                 <h5>{{ place.title }}</h5>
-                {{ place.content|excerpt(40) }}
+                {{ place.content|excerpt(30) }}
+
+                <div class="mt-4">
+                    {% for person in people %}
+                        {% if place.title in person.meta('favourite_places') %}
+                            <a href="{{ person.link }}">
+                                <img src="{{ person.thumbnail.src('thumbnail')|resize('70') }}" alt="img" class="rounded-circle border border-dark">
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div><!-- mt-4 -->
             </div><!-- col-10 -->
         </div><!-- row mt-2 -->
     {% endfor %}
