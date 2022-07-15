@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-8">
+        {% if post.meta('top_story') %}
+            {% set top = post.meta('top_story') %}
+            <div class="row rounded pt-2">
+                <div class="col-4">
+                    <img width="100%" src="{{ theme.link }}/images/news/{{ top.slug }}.jpg" class="mt-2 mb-3" alt="img">
+                </div><!-- col-4 -->
+                <div class="col-8">
+                    <h3 class="fw-bold">
+                        <a href="{{ top.link }}" class="text-dark">{{ top.title }}</a><!-- text-dark -->
+                    </h3><!-- fw-bold -->
+                    {{ top.content|excerpt(50) }}
+                    <a href="{{ top.link }}" class="badge text-bg-light">Read more</a><!-- badge badge-light -->
+                </div><!-- col-8 -->
+            </div><!-- row rounded pt-2 -->
+
+            <!-- Featured news -->
+            {% if post.meta('featured_news') %}
+                <div class="row mt-4">
+                    {% for news in post.meta('featured_news') %}
+                        <div class="col">
+                            <img width="100%" src="{{ theme.link }}/images/news/{{ news.slug }}.jpg" alt="img" class="mt-2 mb-3 rounded">
+                            <h6 class="fw-bold">
+                                <a href="{{ news.link }}" class="text-dark">{{ news.title }}</a><!-- text-dark -->
+                            </h6><!-- fw-bold -->
+                        </div><!-- col -->
+                    {% endfor %}
+                </div><!-- row mt-4 -->
+            {% endif %}
+        {% endif %}
+    </div><!-- col-8 -->
+    <div class="col-4">
+        
+    </div><!-- col-4 -->
+</div><!-- row -->
+
+{% endblock %}
