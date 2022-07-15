@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block subheader %}
+    {# first method of using the subheader #}
+    {# {% from "parts/macros.twig" import header %}
+    {{ header( Image(post.image).src('full'), post.message ) }} #}
+
+    {# second method of using the subheader with block #}
+    {{ block('subheader', 'pages/people.twig') }}
+{% endblock %}
+
+{% block content %}
+    {% for place in places.posts %}
+        <div class="row mt-5">
+            <div class="col-2">
+                <img src="{{ place.thumbnail.src('large') }}" alt="img" width="100%" class="rounded">
+            </div><!-- col-2 -->
+            <div class="col-10">
+                <h5>{{ place.title }}</h5>
+                {{ place.content|excerpt(40) }}
+            </div><!-- col-10 -->
+        </div><!-- row mt-2 -->
+    {% endfor %}
+{% endblock %}
