@@ -28,6 +28,8 @@ $context['sport'] = new Timber\Term('sport');
 $context['animals'] = new Timber\Term('animals');
 $context['architecture'] = new Timber\Term('architecture');
 
+$context['promoted_people'] = new Timber\Term('home', 'promotion');
+
 $timber_post     = new Timber\Post();
 $context['post'] = $timber_post;
 Timber::render( array( 'pages/' . $timber_post->post_name . '.twig', 'page.twig' ), $context );

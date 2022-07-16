@@ -40,6 +40,23 @@
             {% endfor %}
         </div><!-- row mt-4 -->
         {% endif %}
+
+        <!-- Promoted people -->
+        <hr>
+        <div class="row mt-3">
+            {% for person in promoted_people.posts({ posts_per_page: 3, orderby: 'rand' }) %}
+                <div class="col-4">
+                    <div class="card bg-success text-white border-light">
+                        <img src="{{ person.thumbnail.src('full') }}" class="card-img-top" alt="img">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ person.title }}</h5>
+                            <p class="card-text">{{ person.content|excerpt(5) }}</p><!-- card-text -->
+                            <a href="{{ person.link }}" class="btn btn-light">Visit profile</a><!-- btn btn-light -->
+                        </div><!-- card-body -->
+                    </div><!-- card bg-success text-white border-light -->
+                </div><!-- col-4 -->
+            {% endfor %}
+        </div><!-- row mt-3 -->
     </div><!-- col-8 -->
 
     <!-- Right colum -->
