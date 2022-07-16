@@ -1,0 +1,10 @@
+<div class="pt-2 pb-0 mb-3 border-bottom border-{{color}}">
+    <h5 class="text-{{ color }} fw-bold">
+        {{ label }}
+    </h5><!-- text-primary fw-bold -->
+</div><!-- pt-2 pb-0 mb-3 border-bottom border-primary -->
+{% for news in term %}
+    <h6>
+        <a href="{{ news.link }}" class="text-secondary">{{ news.title|excerpt(6) }}</a><!-- text-secondary -->
+    </h6>
+{% endfor %}
