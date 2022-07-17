@@ -8,3 +8,33 @@
         </div><!-- container py-3 -->
     </div><!-- container-fluid py-5 -->
 {% endmacro %}
+
+{% macro table_header(table) %}
+<table class="table">
+    <thead>
+        <tr>
+            {% for col in table %}
+                {% if col != 'none' %}
+                    <th scope="col">{{ col }}</th>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+{% endmacro %}
+
+{% macro table_row(table, article) %}
+<tr>
+    {% for col in table %}
+        {% if col != 'none' %}
+            {% if col == 'content' %}
+                <td>{{ attribute(article, col)|excerpt(10) }}</td>
+            {% elseif col == 'tags' %}
+                <td>{{ attribute(article, col)|join(', ') }}</td>
+            {% else %}
+                <td>{{ attribute(article, col) }}</td>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</tr>
+{% endmacro %}
