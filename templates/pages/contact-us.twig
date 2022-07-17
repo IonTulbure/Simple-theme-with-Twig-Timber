@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        {{ post.content }}
+    </div><!-- col-6 -->
+    <div class="col-6">
+        {{ post.form|shortcodes }}
+    </div><!-- col-6 -->
+</div><!-- row -->
+
+{% endblock %}

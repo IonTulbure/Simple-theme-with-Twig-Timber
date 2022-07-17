@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<h3 class="mb-3 text-center">Search results for:
+    <span class="badge text-dark bg-warning">
+        {{ query }}
+    </span><!-- badge text-dark bg-warning -->
+</h3><!-- mb-3 text-center -->
+
+{% for post in posts %}
+    {{ include('parts/news-teaser.twig') }}
+{% endfor %}
+    {{ include('parts/pagination.twig') }}
+
+{% endblock %}
