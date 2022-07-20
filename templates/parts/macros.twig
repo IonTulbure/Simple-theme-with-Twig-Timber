@@ -9,8 +9,8 @@
     </div><!-- container-fluid py-5 -->
 {% endmacro %}
 
-{% macro table_header(table) %}
-<table class="table">
+{% macro table_header(table, options) %}
+<table class="table {% for class in options %} table-{{ class }}{% endfor %}">
     <thead>
         <tr>
             {% for col in table %}
@@ -23,12 +23,20 @@
     <tbody>
 {% endmacro %}
 
-{% macro table_row(table, article) %}
+{% macro table_row(table, article, colors) %}
 <tr>
     {% for col in table %}
         {% if col != 'none' %}
             {% if col == 'content' %}
                 <td>{{ attribute(article, col)|excerpt(10) }}</td>
+            {% elseif col == 'category' %}
+                {% set cat = attribute(article, col) %}
+                <td>
+                    <span class="badge bg-{{ _self.cat_colors(cat, colors) }}">
+                    {# <span class="badge bg-{{ _self.cat_colors(cat, colors)|spaceless   -- as a filter }}"> #}
+                        {{ cat }}
+                    </span><!-- badge -->
+                </td>
             {% elseif col == 'tags' %}
                 <td>{{ attribute(article, col)|join(', ') }}</td>
             {% else %}
@@ -37,4 +45,14 @@
         {% endif %}
     {% endfor %}
 </tr>
+{% endmacro %}
+
+{% macro cat_colors(cat, colors) %}
+{% apply spaceless %}
+        {% for key, value in colors %}
+            {% if key == cat %}
+                {{ value }}
+            {% endif %}
+        {% endfor %}
+{% endapply %}
 {% endmacro %}

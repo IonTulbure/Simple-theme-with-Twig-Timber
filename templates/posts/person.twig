@@ -46,12 +46,13 @@
 <div class="container">
     {% from "parts/macros.twig" import table_header, table_row %}
     {% set table = post.meta('table') %}
+    {% set options = post.meta('options') %}
 
     <!-- Table header -->
-    {{ table_header(table) }}
+    {{ table_header(table, options) }}
             <!-- Table row -->
             {% for article in post.meta('articles') %}
-                {{ table_row(table, article) }}
+                {{ table_row(table, article, category_labels) }}
             {% endfor %}
 
             <!-- Table footer -->

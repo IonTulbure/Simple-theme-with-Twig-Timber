@@ -88,6 +88,14 @@ class StarterSite extends Timber\Site {
 		$context['secondary_menu']  = new Timber\Menu(21);
 		$context['site']  = $this;
 		$context['art']  = 200;
+		$context['breaking_label']  = get_field('breaking_label', '306');
+		$context['custom_options']  = get_fields('306');
+		$context['category_labels'] = array(
+			'events' => 'primary',
+			'sports' => 'warning',
+			'animals' => 'success',
+			'architecture' => 'info'
+		);
 		return $context;
 	}
 
