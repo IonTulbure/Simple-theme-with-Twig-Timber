@@ -96,6 +96,9 @@ class StarterSite extends Timber\Site {
 			'animals' => 'success',
 			'architecture' => 'info'
 		);
+		$context['theme_options']  = get_fields('options');
+		$context['theme_options_free']  = get_fields('317'); // all fields
+		$context['image_only']  = get_field('picture', '317'); // single field
 		return $context;
 	}
 
@@ -175,3 +178,10 @@ class StarterSite extends Timber\Site {
 }
 
 new StarterSite();
+
+//
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page();
+	
+}

@@ -17,8 +17,12 @@
             by, {{ post.author.display_name }}, {{ post.date }}
         </span><!-- badge badge-light -->
 
-        {% set word_count = post.content|split(' ')|length %}
-        {% set reading_time = (word_count / art)|round(0, 'ceil') %}
+        {# {% set word_count = post.content|split(' ')|length %} 
+        {% set reading_time = (word_count / art)|round(0, 'ceil') %} #}
+        <!-- old code -->
+
+        {% set word_count = post.content|split(' ')|length %} 
+        {% set reading_time = (word_count / theme_options.average_reading_time)|round(0, 'ceil') %}
 
         <span class="badge text-bg-light">
             Reading time: {{ reading_time }} minute{{ reading_time > 1 ? 's' }}

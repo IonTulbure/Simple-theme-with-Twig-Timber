@@ -4,7 +4,12 @@
 
 <div class="row pt-5">
     <div class="col-3">
-        <img src="{{ post.thumbnail.src('large') }}" alt="img" width="100%" class="rounded">
+        {% if post.thumbnail.src %}
+            <img src="{{ post.thumbnail.src('large') }}" alt="img" width="100%" class="rounded">
+        {% else %}
+            <img src="{{ Image(theme_options_free.picture).src('large') }}" alt="img" width="100%" class="rounded"> <!-- multi field variant -->
+            {# <img src="{{ Image(my_image).src('large') }}" alt="img" width="100%" class="rounded"> #} <!-- single field variant -->
+        {% endif %}
     </div><!-- col-3 -->
     <div class="col-9 text-start">
         <h2 class="fw-bold border-bottom border-secondary pb-4">
