@@ -11,8 +11,9 @@
 </head>
 
 <body>
-
-  {{ include('parts/nav.twig') }}
+  {% block nav %}
+    {{ include('parts/nav.twig') }}
+  {% endblock %}
 
   {% block subheader %}{% endblock %}
 

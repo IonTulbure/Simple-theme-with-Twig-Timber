@@ -24,11 +24,14 @@
             Reading time: {{ reading_time }} minute{{ reading_time > 1 ? 's' }}
         </span><!-- badge badge-light -->
 
+        {% block advertisement %}{% endblock %}
+
         <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="400px"
             class="mt-2 ms-4 mb-3 rounded float-end">
         <div class="text-justify mt-3">
             {{ post.content }}
         </div><!-- text-justify mt-3 -->
+        {{ block("advertisement") }} {# Repeat the advertisement block #}
     </div>
 </div>
 

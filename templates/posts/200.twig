@@ -1,0 +1,18 @@
+{# Template for post with certain ID #}
+
+{% extends "posts/post.twig" %}
+
+{% block nav %}
+    {{ include('parts/nav.twig', {ad: true, sponsor: 'ABC Corp.'}) }}
+{% endblock %}
+
+{% block advertisement %}
+
+<div class="row bg-success py-3 my-5 rounded text-center text-white">
+    <div class="col">
+        <h2 class="fw-bold">Why ABC is great?</h2><!-- fw-bold -->
+        <button class="btn btn-outline-light">Find out!</button>
+    </div><!-- col -->
+</div><!-- row bg-success py-3 my-5 rounded text-center text-white -->
+
+{% endblock %}
